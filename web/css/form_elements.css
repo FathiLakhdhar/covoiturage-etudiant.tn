@@ -57,9 +57,9 @@ textarea.form-control {
     cursor: pointer;
 }
 
-input.valid{
-    border-bottom: 3px solid #1aba9c;
+.valid{
+    border-bottom: 3px solid #1aba9c !important;
 }
-input.invalid{
-    border-bottom: 3px solid #fa4d5f;
+.invalid{
+    border-bottom: 3px solid #fa4d5f !important;
 }

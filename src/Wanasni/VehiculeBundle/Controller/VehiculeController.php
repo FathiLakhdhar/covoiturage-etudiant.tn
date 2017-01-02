@@ -182,6 +182,11 @@ class VehiculeController extends Controller
 
 
     /**
+     *
+     */
+
+
+    /**
      * @Route(path="/api-cars-all", name="api-car-all")
      */
     public function CarsAction()
@@ -190,10 +195,32 @@ class VehiculeController extends Controller
         $response->headers->set('Content-Type', 'application/json');
         $rep= $this->getDoctrine()->getRepository("WanasniVehiculeBundle:Marque");
         $marq= $rep->findAll();
+
         $group= SerializationContext::create()->setGroups(array("list"));
         $serializer= $this->get("serializer");
-        return $response->setContent($serializer->serialize($marq,"json",$group));
+        $jsonMarq=$serializer->serialize($marq,"json",$group);
+
+        return $response->setContent($jsonMarq);
     }
+
+
+    /**
+     * @Route(path="/api-car-colors", name="api-car-colors")
+     */
+    public function CarColorsAction()
+    {
+        $response= new Response();
+        $response->headers->set('Content-Type', 'application/json');
+        $repc= $this->getDoctrine()->getRepository("WanasniVehiculeBundle:Couleur");
+        $colors= $repc->findAll();
+
+        $group= SerializationContext::create()->setGroups(array("list"));
+        $serializer= $this->get("serializer");
+        $jsonColor=$serializer->serialize($colors,"json",$group);
+
+        return $response->setContent($jsonColor);
+    }
+
 
 
     /**
@@ -207,14 +234,77 @@ class VehiculeController extends Controller
         $model=$request->get('modele');
         $cofort=$request->get('confort');
         $nbplaces=$request->get('nbrplaces');
+        $color=$request->get('color');
         $immatriculation=$request->get('immatriculation');
 
         $rep=$this->getDoctrine()->getRepository("WanasniVehiculeBundle:Modele");
         $repcolor=$this->getDoctrine()->getRepository("WanasniVehiculeBundle:Couleur");
-        $findmodel= $rep->findOneBy(array("id"=>$model));
-        $findcolor=$repcolor->findOneBy(array("id"=>"000000"));
+        $findmodel=new Modele();
+        $findcolor=new Couleur();
 
-        if($findmodel && in_array($cofort,array("BASIC","NORMAL","COMFORT","LUXE")) && ($nbplaces>0 && $nbplaces<=9) && $findcolor ){
+
+        $valid=true;
+
+        $errors=array();
+
+        if(strlen($model)==0){
+            $valid=false;
+            $errors[]=array(
+                "champ"=> "modele",
+                "error"=> "choise modele"
+            );
+        }else{
+            $findmodel= $rep->findOneBy(array("id"=>$model));
+            if(!$findmodel){
+                $valid=false;
+                $errors[]=array(
+                    "champ"=> "modele",
+                    "error"=> "modele not exist"
+                );
+            }
+        }
+
+        if(strlen($color)==0){
+            $valid=false;
+            $errors[]=array(
+                "champ"=> "color",
+                "error"=> "choise color"
+            );
+        }else{
+            $findcolor=$repcolor->findOneBy(array("id"=>$color));
+            if(!$findcolor){
+                $valid=false;
+                $errors[]=array(
+                    "champ"=> "color",
+                    "error"=> "color not exist"
+                );
+            }
+        }
+
+        if(!in_array($cofort,array("BASIC","NORMAL","COMFORT","LUXE"))){
+            $valid=false;
+            $errors[]=array(
+                "champ"=> "confort",
+                "error"=> "Champ confort doit etre (BASIC,NORMAL, COMFORT, LUXE)"
+            );
+        }
+        if($nbplaces<0 || $nbplaces>9){
+            $valid=false;
+            $errors[]=array(
+                "champ"=> "nbrplaces",
+                "error"=> "Champ nbpalces doit etre nombre entre[0..9]"
+            );
+        }
+        if(strlen($immatriculation)==0){
+            $valid=false;
+            $errors[]=array(
+                "champ"=> "immatriculation",
+                "error"=> "Champ immatriculation not null"
+            );
+        }
+
+
+        if($valid && $this->getUser()){
 
             $v= new Vehicule();
             $v->setUser($this->getUser());
@@ -246,7 +336,7 @@ class VehiculeController extends Controller
         return $response->setData(array(
            'action'=>'api car add',
             'success'=> false,
-            'errors'=>array()
+            'errors'=>$errors
         ));
     }
 

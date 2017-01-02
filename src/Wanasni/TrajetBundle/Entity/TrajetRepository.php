@@ -95,6 +95,21 @@ class TrajetRepository extends EntityRepository
     }
 
 
+    public function SearchByDateAller($date){
+        $qb = $this->createQueryBuilder('t');
+
+        $qb->leftJoin('t.datesAller','datesAller')
+            ->leftJoin('t.datesRetour','datesRetour')
+            ->where('datesAller.date = :date OR datesRetour.date = :date OR t.Date_Allet_unique= :date OR t.Date_Retour_unique= :date')
+            ->setParameter('date', $date)
+
+        ;
+
+
+        return $qb->getQuery()->setMaxResults(3)->getResult();
+    }
+
+
     public function DeleteTrajet($id,$user)
     {
         $q= $this->createQueryBuilder('t');
@@ -105,6 +120,8 @@ class TrajetRepository extends EntityRepository
             ->andWhere('t.conducteur = :c')
             ->setParameter('c',$user);
     }
+
+
 
 
 

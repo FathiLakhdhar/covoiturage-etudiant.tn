@@ -24,7 +24,8 @@ class RecentTrajetExtension extends \Twig_Extension{
 
 
     function getRecentTrajet(){
-        return $this->em->getRepository("WanasniTrajetBundle:Trajet")->findAll();
+        $date = new \DateTime();
+        return $this->em->getRepository("WanasniTrajetBundle:Trajet")->SearchByDateAller($date->format('Y-m-d'));
     }
 
     public function getName()

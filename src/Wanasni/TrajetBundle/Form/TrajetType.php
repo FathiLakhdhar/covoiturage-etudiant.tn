@@ -157,7 +157,7 @@ class TrajetType extends AbstractType
                 'property' => 'fullNameCar',
                 'choices' => $this->user->getVehicules(),
                 'by_reference'=>false,
-                'attr' => array('class' => 'form-control'),
+                'attr' => array('class' => 'form-control choices-vehicules'),
 
             ))
             ->add('cgu', 'checkbox', array(

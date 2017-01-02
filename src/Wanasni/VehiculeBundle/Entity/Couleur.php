@@ -3,6 +3,8 @@
 namespace Wanasni\VehiculeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Groups;
+
 
 /**
  * Couleur
@@ -17,6 +19,7 @@ class Couleur
      *
      * @ORM\Column(name="id", type="string", length=7)
      * @ORM\Id
+     * @Groups({"list", "details"})
      *
      */
     private $id;
@@ -25,12 +28,14 @@ class Couleur
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=20)
+     * @Groups({"list", "details"})
      */
     private $nom;
 
 
     /**
      * @ORM\OneToMany(targetEntity="Wanasni\VehiculeBundle\Entity\Vehicule", mappedBy="couleur")
+     * @Groups({"details"})
      */
     private $vehicules;
 

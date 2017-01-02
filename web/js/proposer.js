@@ -291,12 +291,22 @@ function updatecar(){
 
     var selectMarq= $("select.marque");
     var selectMod= $("select.modele");
+    var selectColor= $("select.color");
     var url= selectMarq.data("apiUrlcars");
+    var urlColor= selectColor.data("apiUrlColors");
     $.get(url,function(data){
         cars=data;
         $.each(cars, function( key, val ) {
             selectMarq.append(
                 "<option value='"+val.id+"'>"+val.car_brand+"</option>"
+            );
+        });
+    });
+
+    $.get(urlColor,function(data){
+        $.each(data, function( key, val ) {
+            selectColor.append(
+                "<option value='"+val.id+"'>"+val.nom+"</option>"
             );
         });
     });
@@ -326,6 +336,7 @@ function updatecar(){
 
     $('body').on('submit', '.formaddcar', function (e) {
             e.preventDefault();
+
             $.ajax({
                     type: $(this).attr('method'),
                     url: $(this).attr('action'),
@@ -333,6 +344,19 @@ function updatecar(){
                 })
                 .done(function (data) {
                     console.log(data);
+                    if(data.success){
+
+                        $('select.choices-vehicules').append(
+                            "<option value='"+data.newcar.id+"'>"+data.newcar.name+"</option>"
+                        );
+                        document.getElementById('formaddcar').reset();
+                        $("#formaddcar .invalid").removeClass("invalid");
+                    }else {
+                        $("#formaddcar .invalid").removeClass("invalid");
+                        $.each(data.errors,function(k, v){
+                            $("#"+v.champ).addClass("invalid");
+                        });
+                    }
                 })
                 .fail(function (jqXHR, textStatus, errorThrown) {
                     console.log('error :' + jqXHR.responseJSON);

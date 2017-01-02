@@ -19,7 +19,8 @@ body {
     scrollbar-track-color: #EBEBEB;
     scrollbar-arrow-color: black;
     scrollbar-shadow-color: #C0C0C0;
-    scrollbar-dark-shadow-color: #C0C0C0;}
+    scrollbar-dark-shadow-color: #C0C0C0;
+}
 
 .thumbnail{
 
@@ -210,6 +211,10 @@ header .menu-links a:hover, header .menu-links a.active {
     border-bottom: 3px solid #fa6c65;
 }
 
+
+.margin-top-100{
+    margin-top: 100px;
+}
 
 
 header a:hover, header .menu-links a:focus {
@@ -412,10 +417,10 @@ Menu nav
 #home {
     background-image: url(../img/coveracc.jpg);
     background-repeat:no-repeat ;
-    background-attachment: fixed;
+    /*background-attachment: fixed;*/
     background-position: center center;
     padding: 0;
-    height: 900px;
+    height: 750px;
     -webkit-background-size: cover;
     background-size: cover;
     -moz-background-size: cover;
@@ -597,7 +602,7 @@ section-video
 .sc-bg-covo{
     background-image: url(../img/covo.jpg);
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    /*background-attachment: fixed;*/
     background-size: cover;
     background-position: center center;
     padding: 30px;
@@ -1140,7 +1145,7 @@ Color
 
 
 .panel-conducteur{
-    background-color: #009688;
+    background-color: #607d8b;
     border-radius: 5px;
     position: absolute;
     top: 15px;
@@ -1196,7 +1201,7 @@ Color
 #contact {
     padding: 100px;
     background-image: url("../img/callcenter.png");
-    background-attachment: fixed;
+    /*background-attachment: fixed;*/
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -1240,7 +1245,7 @@ footer .footer-body{
 }
 
 footer  .footer{
-    padding: 1px;
+    /*padding: 1px;*/
     background-color: #607d8b;
     color: #fff;
 }

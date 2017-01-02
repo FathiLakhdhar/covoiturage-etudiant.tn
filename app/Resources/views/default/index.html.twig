@@ -48,7 +48,7 @@
 
                     </div>
                 </div>
-                <div class="row">
+                <div class="row section-padding-top-bottom-80">
                     <div class="col-lg-4 col-md-3  col-sm-12 text-center ">
 
                         <div class="avantages-icon">
@@ -114,7 +114,7 @@
     <section class="section-padding-top-bottom-80 covoiturage-recent">
 
 
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 text-center margin-top-buttom">
 
@@ -127,47 +127,49 @@
                 {% set recentTrajets = wanasni_recent_trajet() %}
                 {% for trajet in recentTrajets %}
 
-                    <div class="panel panel-success col-lg-3 col-lg-offset-1">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">
-                                {{ trajet.origine.lieu }}
-                                {% if trajet.roundTrip %}
-                                    <i class="ion ion-arrow-swap"></i>
-                                {% else %}
-                                    <i class="ion ion-arrow-right-c"></i>
-                                {% endif %}
-                                {{ trajet.destination.lieu }}
-                            </h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p>
-                                        Publier : {{ trajet.proposerAt|date("d-m-Y") }}
-                                    </p>
-                                    <p>
-                                        <strong>{{ trajet.nbPlacesRestants }}</strong> place(s) disponible(s).
-                                    </p>
-                                    <p>
-                                        <strong>{{ trajet.totalPrix }} TND</strong> par passager
-                                    </p>
+                    <div class="col-lg-4">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    {{ trajet.origine.lieu }}
+                                    {% if trajet.roundTrip %}
+                                        <i class="ion ion-arrow-swap"></i>
+                                    {% else %}
+                                        <i class="ion ion-arrow-right-c"></i>
+                                    {% endif %}
+                                    {{ trajet.destination.lieu }}
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                            Publier : {{ trajet.proposerAt|date("d-m-Y") }}
+                                        </p>
+                                        <p>
+                                            <strong>{{ trajet.nbPlacesRestants }}</strong> place(s) disponible(s).
+                                        </p>
+                                        <p>
+                                            <strong>{{ trajet.totalPrix }} TND</strong> par passager
+                                        </p>
 
+
+                                    </div>
 
                                 </div>
-
                             </div>
-                        </div>
-                        <div class="panel-footer">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <a href="{{ path('trajet_show',{'id':trajet.id}) }}"
-                                       class="btn btn-green"><strong>+ détails</strong></a>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <a href="{{ path('trajet_show',{'id':trajet.id}) }}"
+                                           class="btn btn-green"><strong>+ détails</strong></a>
+                                    </div>
                                 </div>
+
+
                             </div>
 
-
                         </div>
-
                     </div>
 
                 {% else %}
