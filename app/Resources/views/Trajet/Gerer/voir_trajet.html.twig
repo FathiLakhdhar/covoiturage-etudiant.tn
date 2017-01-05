@@ -297,23 +297,28 @@
 
                 </div>
                 <div class="col-md-4">
-                    <div class="thumbnail">
-                        <h3 class="steelblue">Votre itinéraire</h3>
+                    <div class="panel">
+                        <!-- Default panel contents -->
+                        <h4 class="panel-heading uppercase" style="margin-top: 0px;background-color: #607D8B !important;color: white;"><i class="ion ion-map"></i> Votre itinéraire</h4>
+                        <div class="panel-body">
+                            {% set strPointOrigine= trajet.origine.lieu %}
+                            {% set strPointDestination= trajet.destination.lieu %}
+                            {% set strPointWaypoints = '' %}
+                            {% for waypoint in trajet.waypoints %}
+                                {% if loop.first %}
+                                    {% set strPointWaypoints = waypoint.lieu %}
+                                {% else %}
+                                    {% set strPointWaypoints = strPointWaypoints ~'|'~ waypoint.lieu %}
+                                {% endif %}
+                            {% endfor %}
 
-                        {% set strPointOrigine= trajet.origine.lieu %}
-                        {% set strPointDestination= trajet.destination.lieu %}
-                        {% set strPointWaypoints = '' %}
-                        {% for waypoint in trajet.waypoints %}
-                            {% if loop.first %}
-                                {% set strPointWaypoints = waypoint.lieu %}
-                            {% else %}
-                                {% set strPointWaypoints = strPointWaypoints ~'|'~ waypoint.lieu %}
-                            {% endif %}
-                        {% endfor %}
+                            <div id="map" data-Origine="{{ strPointOrigine }}" data-Destination="{{ strPointDestination }}"
+                                 data-Waypoints="{{ strPointWaypoints }}"></div>
+                        </div>
 
-                        <div id="map" data-Origine="{{ strPointOrigine }}" data-Destination="{{ strPointDestination }}"
-                             data-Waypoints="{{ strPointWaypoints }}"></div>
+
                     </div>
+
                     <div class="thumbnail">
                         <div id="directions-panel">
                             <ul class="list-group">

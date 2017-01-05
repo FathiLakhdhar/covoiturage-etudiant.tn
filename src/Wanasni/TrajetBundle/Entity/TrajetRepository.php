@@ -100,13 +100,12 @@ class TrajetRepository extends EntityRepository
 
         $qb->leftJoin('t.datesAller','datesAller')
             ->leftJoin('t.datesRetour','datesRetour')
-            ->where('datesAller.date = :date OR datesRetour.date = :date OR t.Date_Allet_unique= :date OR t.Date_Retour_unique= :date')
+            ->where('datesAller.date >= :date OR datesRetour.date >= :date OR t.Date_Allet_unique >= :date OR t.Date_Retour_unique >= :date')
             ->setParameter('date', $date)
-
         ;
 
 
-        return $qb->getQuery()->setMaxResults(3)->getResult();
+        return $qb->getQuery()->setMaxResults(9)->getResult();
     }
 
 

@@ -214,9 +214,14 @@
             <div class="col-lg-4">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="thumbnail">
-                            <h3>Votre itinéraire</h3>
-                            <div id="map"></div>
+                        <div class="panel">
+                            <!-- Default panel contents -->
+                            <h4 class="panel-heading uppercase" style="margin-top: 0px;background-color: #607D8B !important;color: white;"><i class="ion ion-map"></i> Votre itinéraire</h4>
+                            <div class="panel-body">
+                                <div id="map"></div>
+                            </div>
+
+
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -242,7 +247,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="thumbnail">
-                            <section class="alert alert-warning">
+                            <section class="alert">
                                 <div class="row">
                                     <div class="col-xs-1">
                                         {{ form_widget(form.cgu) }}

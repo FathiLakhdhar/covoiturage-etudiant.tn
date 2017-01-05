@@ -11,7 +11,6 @@ body {
     font-family: Roboto, 'Lato', sans-serif;
     line-height: 30px;
     font-size: 14px;
-    font-weight: 200;
     background-color: #FFFFFF;
     scrollbar-base-color: #C0C0C0;
     scrollbar-base-color: #C0C0C0;
@@ -41,6 +40,11 @@ section {
 }
 
 .section-padding-top-bottom-80{
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.section-padding-top-bottom-40{
     padding-top: 80px;
     padding-bottom: 80px;
 }
@@ -178,7 +182,7 @@ img.loading{
 }
 
 header {
-    background-color: rgba(21, 34, 53, 1);
+    background-color: #607d8b;
     color: #fff;
     padding-top: 20px;
     padding-bottom: 12px;
@@ -209,8 +213,8 @@ header .menu-links a {
 
 
 header .menu-links a:hover, header .menu-links a.active {
-    color: #fa6c65;
-    border-bottom: 3px solid #fa6c65;
+    color: white;
+    border-bottom: 3px solid white;
 }
 
 
@@ -428,6 +432,18 @@ Menu nav
     -moz-background-size: cover;
 }
 
+.bg-search{
+    background-image: url(../img/bg-car.jpg);
+    background-repeat:no-repeat ;
+    /*background-attachment: fixed;*/
+    background-position: center center;
+    padding: 0;
+    height: 500px;
+    -webkit-background-size: cover;
+    background-size: cover;
+    -moz-background-size: cover;
+}
+
 #home .overlay {
     padding-top: 200px;
     /*background-color: rgba(36, 36, 36, 0.5);*/
@@ -446,7 +462,11 @@ Menu nav
 }
 
 
-
+.filter-black{
+    background-color: rgba(36, 36, 36, 0.5);
+    width: 100%;
+    height: 100%;
+}
 
 #home .home-form{
     margin: 80px 0px;
@@ -536,18 +556,6 @@ Profitez des avantages du covoiturage WANASNI
     font-family: Roboto, "Calibri Light", 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.heading-title h2:after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 20%;
-    height: 3px;
-    background: #607D8B;
-    left: 40%;
-    bottom: 0;
-}
-
-
 #avantage p{
     line-height: 20px;
     font-size: 15px;
@@ -579,12 +587,15 @@ Profitez des avantages du covoiturage WANASNI
 .avantages-icon-hover-3:hover {
     border: 10px solid #3AB0E2;
 }
+.avantages-icon:hover {
+    border: 4px solid #7e93b6;
+}
 
 
 .avantages-icon img{
     position: relative;
     top: 5px;
-    width: 70px;
+    width: 90px;
     vertical-align: middle;
 }
 
@@ -1242,7 +1253,7 @@ footer {
 }
 
 footer .footer-body{
-    background-color: #353c44;
+    background-color: #607d8b;
     color: #fff;
 }
 

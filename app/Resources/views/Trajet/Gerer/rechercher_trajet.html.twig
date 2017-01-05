@@ -5,7 +5,17 @@
 
 {% block body %}
 
-    <div class="container-fluid margin-top-100">
+
+
+    <div class="bg-search">
+    </div>
+    <div class="container-fluid">
+
+
+
+        <div class="row col-lg-12 text-center section-padding-top-bottom-80">
+            <h2 class="uppercase">Simplifier vos trajets </h2>
+        </div>
 
 
         <section class="row">
@@ -146,7 +156,7 @@
                             </div>
 
                         {% else %}
-                            <div class="alert alert-info">
+                            <div class="alert" style="border: 1px solid #03a9f4;">
                                 <p>Pour le moment, il n'y a pas de trajet déposé à cette date.
                                     Vous pouvez déposer un trajet ou créer une alerte dès maintenant.</p>
                             </div>
@@ -164,7 +174,7 @@
 
                         <div class="panel">
                             <!-- Default panel contents -->
-                            <h4 class="panel-heading uppercase" style="margin-top: 0px;background-color: #1abb9c !important;color: white;"><i class="ion ion-ios-alarm-outline"></i> Créer une alerte</h4>
+                            <h4 class="panel-heading uppercase" style="margin-top: 0px;background-color: #607D8B !important;color: white;"><i class="ion ion-ios-alarm-outline"></i> Créer une alerte</h4>
                             <div class="panel-body">
                                 {% if form %}
                                     {{ include(':Trajet/Gerer:alert.html.twig') }}
