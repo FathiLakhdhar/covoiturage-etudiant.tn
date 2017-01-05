@@ -10,7 +10,7 @@ select{
     background-color: transparent !important;
     font-size: 14px;
     font-weight: 300;
-    color: #607d8b;
+    color: #607d8b !important;
     border: none;
     border-bottom: 1px solid #607D8B; 
     border-radius: 0px;
@@ -62,4 +62,18 @@ textarea.form-control {
 }
 .invalid{
     border-bottom: 3px solid #fa4d5f !important;
+}
+
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #607d8b !important;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: #607d8b !important;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: #607d8b !important;
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: #607d8b !important;
 }

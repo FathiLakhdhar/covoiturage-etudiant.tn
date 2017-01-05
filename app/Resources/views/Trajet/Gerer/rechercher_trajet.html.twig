@@ -162,9 +162,9 @@
                 <div class="row">
                     <div class="col-md-12">
 
-                        <div class="panel panel-default">
+                        <div class="panel">
                             <!-- Default panel contents -->
-                            <h4 class="panel-heading uppercase" style="margin-top: 0px;background-color: #faf8f8 !important;"><i class="ion ion-ios-alarm-outline"></i> Créer une alerte</h4>
+                            <h4 class="panel-heading uppercase" style="margin-top: 0px;background-color: #1abb9c !important;color: white;"><i class="ion ion-ios-alarm-outline"></i> Créer une alerte</h4>
                             <div class="panel-body">
                                 {% if form %}
                                     {{ include(':Trajet/Gerer:alert.html.twig') }}
@@ -178,12 +178,27 @@
 
                         </div>
                     </div>
-                    <div class="col-md-12 bg-lightcoral">
+                    <div class="col-md-12">
+
+                        <div class="panel">
+                            <!-- Default panel contents -->
+                            <h4 class="panel-heading uppercase" style="margin-top: 0px;background-color: #fa4e5f !important;color: white;"><i class="ion ion-map"></i> Proposez un trajet</h4>
+                            <div class="panel-body">
+                                <p>Pour un trajet unique ou régulier pensez à covoiturer. Créez une annonce gratuite
+                                    pour partager les frais de votre voyage ! </p>
+                                <a href="{{ path('trajet_proposer_unique') }}" class="darkviolet">Créer votre annonce dès
+                                    maintenant !</a>
+                            </div>
+
+
+                        </div>
+                        {#
                         <h3>Proposez un trajet</h3>
                         <p>Pour un trajet unique ou régulier pensez à covoiturer. Créez une annonce gratuite
                             pour partager les frais de votre voyage ! </p>
                         <a href="{{ path('trajet_proposer_unique') }}" class="darkviolet">Créer votre annonce dès
                             maintenant !</a>
+                            #}
                     </div>
                 </div>
             </div>

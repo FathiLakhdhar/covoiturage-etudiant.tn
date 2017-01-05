@@ -24,6 +24,9 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    globals:
+        site: Student Carpooling.tn 2017 ©
+        app_name: Student Carpooling.tn
 
 # Assetic Configuration
 assetic:
