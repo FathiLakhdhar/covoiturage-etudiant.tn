@@ -882,25 +882,25 @@ header .menu-client li{
 }
 
 header .links-anonymouse a.btn-Contour:hover{
-    color: #FFFFFF;
-    background-color: #607D8B;
-    border-color: #607D8B;
+    color: #607D8B;
+    background-color: white;
+    border-color: white;
 }
 header .links-anonymouse a.btn-Contour{
-    color: #607D8B;
+    color: white;
 }
 
 
 header .links-anonymouse a.btn-vert:hover{
-    color: #607D8B;
-    border-color: #607D8B;
+    color: white;
+    border-color: white;
     background-color: rgba(0,0,0,0);
 
 }
 header .links-anonymouse a.btn-vert{
-    color: #FFFFFF;
-    background-color: #607D8B;
-    border-color: #607D8B;
+    color: #607D8B;
+    background-color: white;
+    border-color: white;
 
 }
 
@@ -1109,7 +1109,12 @@ Color
     color: #d81b60
 }
 
-
+.hidden{
+    opacity:0;
+}
+.visible{
+    opacity:1;
+}
 /******************
     Panels
 

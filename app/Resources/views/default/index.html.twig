@@ -11,7 +11,7 @@
 
                 <div class="row">
                     <div class="overlay-text">
-                        <div class="col-lg-3 text-center pull-right">
+                        <div class="col-lg-3 text-center pull-right hidden animate-zoom-in-right">
                             <h1 class="align-right"><span class="red">Just Go</span><br/><span
                                         class="font-weight-normal">with us</span></h1>
                         </div>
@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6  pull-right">
 
-                        <p class="home-Membre-bg align-right">
+                        <p class="home-Membre-bg align-right hidden animate-zoom-in-right">
                             Un covoiturage special etudiant pour la premiere fois sit amet, consectetur adipiscing elit.
                             Quisque maximus leo nisl, et tincidunt magna pretium et. Fusce iaculis sollicitudin nunc
                             mollis lacinia.Fusce iaculis sollicitudin nunc mollis lacinia.
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="row " style="padding-bottom: 80px">
-                    <div class="col-lg-4 col-md-3  col-sm-12 text-center ">
+                    <div class="col-lg-4 col-md-3  col-sm-12 text-center hidden animate-bounce-in-left">
 
                         <div class="avantages-icon">
                             <img src="{{ asset('img/sedan-car-front.png') }}">
@@ -60,7 +60,7 @@
                             there
                         </p>
                     </div>
-                    <div class="col-lg-4  col-md-3   col-sm-12 text-center">
+                    <div class="col-lg-4  col-md-3   col-sm-12 text-center hidden animate-fade-in">
                         <div class="avantages-icon ">
                             <img src="{{ asset('img/payment-method.png') }}">
                         </div>
@@ -70,7 +70,7 @@
                             there
                         </p>
                     </div>
-                    <div class="col-lg-4   col-md-3  col-sm-12 text-center">
+                    <div class="col-lg-4   col-md-3  col-sm-12 text-center hidden animate-bounce-in-right">
                         <div class="avantages-icon">
                             <img src="{{ asset('img/couple-kissing.png') }}">
                         </div>
@@ -94,7 +94,7 @@
         <div class="container">
             <div class="row ">
                 <div class="col-lg-6 col-lg-offset-3 text-center margin-top-buttom heading-title">
-                    <div style="background-color: rgba(255, 255, 255, 0.73);padding: 1px 20px;">
+                    <div class="animate-jello" style="background-color: rgba(255, 255, 255, 0.73);padding: 1px 20px;">
                         <h2>
                             Un covoiturage spécial étudiant !
                         </h2>
@@ -127,7 +127,7 @@
                 {% set recentTrajets = wanasni_recent_trajet() %}
                 {% for trajet in recentTrajets %}
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 hidden animate-fade-in-up">
                         <div class="panel panel-success">
                             <div class="panel-heading">
                                 <h3 class="panel-title">
@@ -199,7 +199,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 hidden animate-bounce-in-left">
                     <div class="section-text">
                         <h4></h4>
                         <p style="color: white;"><i class="fa fa-phone"></i> +216 22 554 440</p>
@@ -207,7 +207,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-6 hidden animate-bounce-in-right">
                     <form id="contact_form" name="sentMessage" method="post" action="{{ path('api_contactez_nous') }}"
                           class="contact_form">
 
@@ -304,6 +304,39 @@
 
 
         $(document).ready(function () {
+
+            $('.animate-zoom-in-right').removeClass('hidden').addClass("visible animated zoomInRight");
+            $('.animate-zoom-in-down').removeClass('hidden').addClass("visible animated zoomInDown");
+
+            $('.animate-bounce-in-left').viewportChecker({
+                classToAdd: 'visible animated bounceInLeft',
+                classToRemove: 'hidden',
+                invertBottomOffset: false,
+                offset: 1
+            });
+            $('.animate-fade-in-up').viewportChecker({
+                classToAdd: 'visible animated fadeInUp',
+                classToRemove: 'hidden',
+                invertBottomOffset: false,
+                offset: 1
+            });
+            $('.animate-fade-in').viewportChecker({
+                classToAdd: 'visible animated fadeIn',
+                classToRemove: 'hidden',
+                invertBottomOffset: false,
+                offset: 1
+            });
+            $('.animate-bounce-in-right').viewportChecker({
+                classToAdd: 'visible animated bounceInRight',
+                classToRemove: 'hidden',
+                invertBottomOffset: false,
+                offset: 1
+            });
+            $('.animate-jello').viewportChecker({
+                classToAdd: 'animated jello',
+                invertBottomOffset: false,
+                offset: 1
+            });
 
 
             AjaxFormContactNous();
