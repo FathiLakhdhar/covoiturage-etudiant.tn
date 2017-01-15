@@ -25,9 +25,8 @@ function AutoComplete($id) {
         if (place.geometry && (typeof map !="undefined")) {
             map.panTo(place.geometry.location);
             map.setZoom(7);
-            var $parent = $($elem).parent();
-            $parent.find('input[class=latitude]').val(place.geometry.location.lat());
-            $parent.find('input[class=longitude]').val(place.geometry.location.lng());
+            $($elem).siblings('input[class=latitude]').val(place.geometry.location.lat());
+            $($elem).siblings('input[class=longitude]').val(place.geometry.location.lng());
 
             calculateAndDisplayRoute(directionsService, directionsDisplay);
 
