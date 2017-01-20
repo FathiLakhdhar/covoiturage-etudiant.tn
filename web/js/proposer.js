@@ -191,12 +191,12 @@ var regularTrip = function () {
                     self.widgetChooseDate.attr("data-day", dayCalendar);
                     self.widgetChooseDate.modal('show');
                     if (self.hasDate("simple", dayCalendar)) {
-                        $("input#simple-choice").attr("checked", "checked");
-                        $(".simple-choice-label").addClass("label-success")
+                        document.getElementById('simple-choice').checked=true;
+                        $(".simple-choice-label").addClass("label-success");
                     }
                     if (self.hasDate("round", dayCalendar)) {
-                        $("input#round-choice").attr("checked", "checked");
-                        $(".round-choice-label").addClass("label-info")
+                        document.getElementById('round-choice').checked=true;
+                        $(".round-choice-label").addClass("label-info");
                     }
                 } else {
                     var dayCalendarSimple = self.getReverseDateKey(dayCalendar);
@@ -212,16 +212,16 @@ var regularTrip = function () {
 
 
         self.widgetChooseDate.find("button.btn-validation").click(function () {
-            var dayModal = self.getReverseDateKey(self.widgetChooseDate.attr("data-day")), checkBoxSimple = self.widgetChooseDate.find("input#simple-choice"), checkBoxRound = self.widgetChooseDate.find("input#round-choice");
+            var dayModal = self.getReverseDateKey(self.widgetChooseDate.attr("data-day")), checkBoxSimple = $("input#simple-choice"), checkBoxRound = $("input#round-choice");
             var simpleAction = checkBoxSimple.is(":checked") ? "add" : "remove";
             self.addRemoveDate(simpleAction, "simple", dayModal);
             var roundAction = checkBoxRound.is(":checked") ? "add" : "remove";
             self.addRemoveDate(roundAction, "round", dayModal);
             self.beforeShowDay(dayModal);
             self.widgetCalendar.datepicker("refresh");
-            checkBoxSimple.attr("checked", false);
+            document.getElementById('simple-choice').checked=false;
             $(".simple-choice-label").removeClass("label-success");
-            checkBoxRound.attr("checked", false);
+            document.getElementById('round-choice').checked=false;
             $(".round-choice-label").removeClass("label-info")
         });
 
@@ -230,6 +230,13 @@ var regularTrip = function () {
                 self.uncheckDays("round")
             }
         });
+        self.widgetChooseDate.on('hide.bs.modal', function (e) {
+            console.log("modal hidden");
+            document.getElementById('simple-choice').checked=false;
+            $(".simple-choice-label").removeClass("label-success");
+            document.getElementById('round-choice').checked=false;
+            $(".round-choice-label").removeClass("label-info")
+        })
 
 
     };
