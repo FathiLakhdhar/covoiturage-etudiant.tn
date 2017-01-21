@@ -43,7 +43,10 @@
         ]
     },
     "config": {
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "platform": {
+            "php": "5.5.12"
+        }
     },
     "minimum-stability": "stable",
     "extra": {
